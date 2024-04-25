@@ -1,4 +1,4 @@
-# DubMania [fa=microphone /]
+# DubMania 🎙️
 
 Mini-jeux web sur le thème du doublage pour jouer avec ses amis jusqu'à 4 personnes
 
