@@ -4,7 +4,7 @@ Mini-jeux web sur le thème du doublage pour jouer avec ses amis jusqu'à 4 pers
 
 ## Mini-jeux
 
-Liste des **mini-jeux** disponibles :
+Liste des **mini-jeux** en cour de développement :
 * Doublage seul sur une scène où un unique personnage parle
 * Doublage a plusieur sur une scène où 4 personnes parlent
 * Doublage en team de 2 sur une scène où 2 personnes parlent
