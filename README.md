@@ -1,6 +1,6 @@
 # DubMania
 
-Mini-Jeux web sur le thème du doublage
+Mini-jeux web sur le thème du doublage pour jouer avec ses amis j'usquà 4 personnes
 
 ## Mini-jeux
 
