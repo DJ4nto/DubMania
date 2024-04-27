@@ -51,7 +51,6 @@ function StartRecordMic() {
     if (!can_record) return;
 
     recorder.start();
-    video.start();
     mic_btn.classList.add("is-recording");
     play_btn.disabled = false;
 }
@@ -62,5 +61,5 @@ function StopRecordMic() {
 }
 
 function PlayVideo() {
-    video.start();
+    Audio(audioURL).play();
 }
