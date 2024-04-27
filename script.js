@@ -7,6 +7,10 @@ mic_btn.addEventListener('click', StartRecordMic);
 stop_btn.addEventListener('click', StopRecordMic);
 play_btn.addEventListener('click', PlayVideo);
 
+mic_btn.disabled = false;
+stop_btn.disabled = true;
+play_btn.disabled = true;
+
 let can_record = false;
 
 let recorder = null;
@@ -49,15 +53,27 @@ function SetupStream(stream) {
 function StartRecordMic() {
     if (!can_record) return;
 
+    mic_btn.disabled = true;
+    stop_btn.disabled = false;
+    play_btn.disabled = true;
+
     recorder.start();
     mic_btn.classList.add("is-recording");
 }
 
 function StopRecordMic() {
+    mic_btn.disabled = false;
+    stop_btn.disabled = true;
+    play_btn.disabled = false;
+
     recorder.stop();
     mic_btn.classList.remove("is-recording");
 }
 
 function PlayVideo() {
+    mic_btn.disabled = true;
+    stop_btn.disabled = true;
+    play_btn.disabled = false;
+
     playback.play();
 }
