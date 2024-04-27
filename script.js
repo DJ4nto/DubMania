@@ -29,11 +29,6 @@ function onYouTubePlayerAPIReady() {
     });
 }
 
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/player_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
 function SetupAudio() {
     console.log("AudioSetup");
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -76,7 +71,7 @@ function StartRecordMic() {
 
     player.addEventListener('onStateChange', function(e) {
         if (e.data === 0) {
-            StopRecordMic()
+            StopRecordMic();
         }
      });
 
@@ -118,3 +113,8 @@ function PauseVideo() {
     play_btn.disabled = false;
     pause_btn.disabled = true;
 }
+
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/player_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
