@@ -20,6 +20,20 @@ let recorder = null;
 
 let chunks = [];
 
+var player;
+function onYouTubePlayerAPIReady() {
+    player = new YT.Player('video', {
+        events: {
+            'onReady': onPlayerReady
+        }
+    });
+}
+
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/player_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
 function SetupAudio() {
     console.log("AudioSetup");
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -57,7 +71,14 @@ function StartRecordMic() {
     if (!can_record) return;
 
     recorder.start();
+    player.playVideo();
     mic_btn.classList.add("is-recording");
+
+    player.addEventListener('onStateChange', function(e) {
+        if (e.data === 0) {
+            StopRecordMic()
+        }
+     });
 
     mic_btn.disabled = true;
     stop_btn.disabled = false;
@@ -67,6 +88,7 @@ function StartRecordMic() {
 
 function StopRecordMic() {
     recorder.stop();
+    player.stopVideo();
     mic_btn.classList.remove("is-recording");
 
     mic_btn.disabled = false;
@@ -77,6 +99,7 @@ function StopRecordMic() {
 
 function PlayVideo() {
     playback.play();
+    player.playVideo();
 
     playback.addEventListener("ended", (event) => {PauseVideo()});
 
@@ -88,6 +111,7 @@ function PlayVideo() {
 
 function PauseVideo() {
     playback.pause();
+    player.pauseVideo();
 
     mic_btn.disabled = false;
     stop_btn.disabled = true;
