@@ -1,17 +1,19 @@
-const mic_btn = document.querySelector('#mic');
+const mic_btn = document.getElementById('mic');
+const play_btn = document.getElementById('play')
 const playback = document.querySelector('.playback');
 
-mic_btn.addEventListener('click', ToggleMic);
+mic_btn.addEventListener('click', RecordMic);
+play_btn.addEventListener('click', PlayVideo);
 
 let can_record = false;
-let is_recording = false;
+let can_play = false;
 
 let recorder = null;
 
 let chunks = [];
 
 function SetupAudio() {
-    console.log("Setup");
+    console.log("AudioSetup");
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices
             .getUserMedia({
@@ -43,16 +45,17 @@ function SetupStream(stream) {
     can_record = true;
 }
 
-function ToggleMic() {
+function RecordMic() {
     if (!can_record) return;
 
-    is_recording = !is_recording;
+    recorder.start();
+    video.start();
+    mic_btn.classList.add("is-recording");
+    can_play = true;
+}
 
-    if (is_recording) {
-        recorder.start();
-        mic_btn.classList.add("is-recording");
-    } else {
-        recorder.stop()
-        mic_btn.classList.remove("is-recording");
-    }
+function PlayVideo() {
+    if (!can_play) return;
+
+    video.start();
 }
