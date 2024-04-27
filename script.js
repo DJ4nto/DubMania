@@ -76,12 +76,12 @@ function StopRecordMic() {
 }
 
 function PlayVideo() {
+    playback.play();
+
     mic_btn.disabled = true;
     stop_btn.disabled = true;
     play_btn.disabled = false;
     pause_btn.disabled = false;
-
-    playback.play();
 
     playback.addEventListener("ended", (event) => {PauseVideo()});
 }
