@@ -57,12 +57,8 @@ function StartRecordMic() {
 }
 
 function StopRecordMic() {
-    if(mic_btn.classList = "is-recording") {
-        recorder.stop();
-        mic_btn.classList.remove("is-recording");
-    } else {
-        return;
-    }
+    recorder.stop();
+    mic_btn.classList.remove("is-recording");
 }
 
 function PlayVideo() {
