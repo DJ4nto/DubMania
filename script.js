@@ -1,15 +1,18 @@
 const mic_btn = document.getElementById('start-mic');
-const stop_btn = document.getElementById('stop-mic')
-const play_btn = document.getElementById('play')
+const stop_btn = document.getElementById('stop-mic');
+const play_btn = document.getElementById('play');
+const pause_btn = document.getElementById('pause');
 const playback = document.querySelector('.playback');
 
 mic_btn.addEventListener('click', StartRecordMic);
 stop_btn.addEventListener('click', StopRecordMic);
 play_btn.addEventListener('click', PlayVideo);
+pause_btn.addEventListener('click', PauseVideo);
 
 mic_btn.disabled = false;
 stop_btn.disabled = true;
 play_btn.disabled = true;
+pause_btn.disabled = true;
 
 let can_record = false;
 
@@ -56,6 +59,7 @@ function StartRecordMic() {
     mic_btn.disabled = true;
     stop_btn.disabled = false;
     play_btn.disabled = true;
+    pause_btn.disabled = true;
 
     recorder.start();
     mic_btn.classList.add("is-recording");
@@ -65,6 +69,7 @@ function StopRecordMic() {
     mic_btn.disabled = false;
     stop_btn.disabled = true;
     play_btn.disabled = false;
+    pause_btn.disabled = true;
 
     recorder.stop();
     mic_btn.classList.remove("is-recording");
@@ -74,10 +79,18 @@ function PlayVideo() {
     mic_btn.disabled = true;
     stop_btn.disabled = true;
     play_btn.disabled = false;
+    pause_btn.disabled = false;
 
     playback.play();
 
-    playback.onended = (envent) => {
-        mic_btn.disabled = false;
-    }
+    playback.onended = (PauseVideo())
+}
+
+function PauseVideo() {
+    mic_btn.disabled = false;
+    stop_btn.disabled = true;
+    play_btn.disabled = true;
+    pause_btn.disabled = true;
+
+    playback.pause();
 }
