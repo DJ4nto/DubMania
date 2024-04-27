@@ -41,7 +41,6 @@ function SetupStream(stream) {
         chunks = [];
         const audioURL = window.URL.createObjectURL(blob);
         playback.src = audioURL;
-        console.log(audioURL)
     }
 
     can_record = true;
