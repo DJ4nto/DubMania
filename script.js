@@ -6,7 +6,6 @@ const playback = document.querySelector('.playback');
 mic_btn.addEventListener('click', StartRecordMic);
 stop_btn.addEventListener('click', StopRecordMic);
 play_btn.addEventListener('click', PlayVideo);
-play_btn.disabled = true;
 
 let can_record = false;
 
@@ -52,7 +51,6 @@ function StartRecordMic() {
 
     recorder.start();
     mic_btn.classList.add("is-recording");
-    play_btn.disabled = false;
 }
 
 function StopRecordMic() {
