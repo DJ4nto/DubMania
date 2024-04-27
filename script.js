@@ -25,3 +25,34 @@ function SetupAudio() {
 }
 
 SetupAudio();
+
+function SetupStream(stream) {
+    recorder = new MediaRecorder(stream);
+
+    recorder.ondataavailable = e => {
+        chunks.push(e.data);
+    }
+
+    recorder.onstop = e => {
+        const blob = new Blob(chunks, { type: "audio/ogg; codecs=opus"});
+        chunks = [];
+        const audioURL = window.URL.createObjectURL(blob);
+        playback.src = audioURL;
+    }
+
+    can_record = true;
+}
+
+function ToggleMic() {
+    if (!can_record) return;
+
+    is_recording = !is_recording;
+
+    if (is_recording) {
+        recorder.start();
+        mic_btn.classList.add("is-recording");
+    } else {
+        recorder.stop()
+        mic_btn.classList.remove("is-recording");
+    }
+}
