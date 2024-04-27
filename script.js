@@ -59,6 +59,5 @@ function StopRecordMic() {
 }
 
 function PlayVideo() {
-    const audiofile = new Audio(audioURL);
-    audiofile.play();
+    playback.play();
 }
