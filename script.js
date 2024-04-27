@@ -76,4 +76,8 @@ function PlayVideo() {
     play_btn.disabled = false;
 
     playback.play();
+
+    playback.onended = (envent) => {
+        mic_btn.disabled = false;
+    }
 }
