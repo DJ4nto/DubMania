@@ -61,6 +61,8 @@ function StartRecordMic() {
     video.play();
     mic_btn.classList.add("is-recording");
 
+    video.addEventListener("ended", (event) => {StopRecordMic()});
+
     mic_btn.disabled = true;
     stop_btn.disabled = false;
     play_btn.disabled = true;
