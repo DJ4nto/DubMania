@@ -82,6 +82,8 @@ function PlayVideo() {
     pause_btn.disabled = false;
 
     playback.play();
+
+    playback.addEventListener("ended", (event) => {PauseVideo()});
 }
 
 function PauseVideo() {
