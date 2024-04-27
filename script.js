@@ -1,8 +1,10 @@
-const mic_btn = document.getElementById('mic');
+const mic_btn = document.getElementById('start-mic');
+const stop_btn = document.getElementById('stop-mic')
 const play_btn = document.getElementById('play')
 const playback = document.querySelector('.playback');
 
-mic_btn.addEventListener('click', RecordMic);
+mic_btn.addEventListener('click', StartRecordMic);
+stop_btn.addEventListener('click', StopRecordMic);
 play_btn.addEventListener('click', PlayVideo);
 play_btn.disabled = true;
 
@@ -45,13 +47,22 @@ function SetupStream(stream) {
     can_record = true;
 }
 
-function RecordMic() {
+function StartRecordMic() {
     if (!can_record) return;
 
     recorder.start();
     video.start();
     mic_btn.classList.add("is-recording");
     play_btn.disabled = true;
+}
+
+function StopRecordMic() {
+    if(mic_btn.classList = "is-recording") {
+        recorder.stop();
+        mic_btn.classList.remove("is-recording");
+    } else {
+        return;
+    }
 }
 
 function PlayVideo() {
