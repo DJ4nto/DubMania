@@ -82,8 +82,6 @@ function PlayVideo() {
     pause_btn.disabled = false;
 
     playback.play();
-
-    playback.onended = (PauseVideo())
 }
 
 function PauseVideo() {
