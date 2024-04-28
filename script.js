@@ -18,8 +18,7 @@ let recorder = null;
 
 let chunks = [];
 
-function SetupAudio() {
-    console.log("AudioSetup");
+function Setup() {
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices
             .getUserMedia({
@@ -32,7 +31,7 @@ function SetupAudio() {
     }
 }
 
-SetupAudio();
+Setup();
 
 function SetupStream(stream) {
     recorder = new MediaRecorder(stream);
