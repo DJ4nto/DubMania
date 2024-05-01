@@ -36,7 +36,7 @@
 
 .logo{
   position: absolute;
-  top: -25px;
+  top: -35px;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%);
@@ -61,25 +61,25 @@ html{
 
 .tutorial{
   position: absolute;
-  top: 50%;
+  top: 53%;
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: max-content;
+  height: 270px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  border: 3px solid white;
 }
 
 .carrousel-tutorial{
-  display: flex;
+  height: 100%;
 }
 
 .slide{
-  background: rgb(101, 15, 15);
   flex-shrink: 0;
   width: 100%;
-
   display: flex;
   align-items: stretch;
+  animation: tutorial 12s infinite ease-in-out;
 }
 
 .slide-img{
@@ -99,6 +99,16 @@ html{
   align-self: center;
 }
 
-.carrousel-btn{
-  color: #8858CF;
+@keyframes tutorial {
+  0% {transform: translateY(0%);}
+  10% {transform: translateY(0%);}
+  20% {transform: translateY(0%);}
+  30% {transform: translateY(-100%);}
+  40% {transform: translateY(-100%);}
+  50% {transform: translateY(-100%);}
+  60% {transform: translateY(-100%);}
+  70% {transform: translateY(-200%);}
+  80% {transform: translateY(-200%);}
+  90% {transform: translateY(-200%);}
+  100% {transform: translateY(0%);}
 }
