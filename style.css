@@ -60,25 +60,26 @@ html{
 }
 
 .tutorial{
-  display: grid;
-  grid-template-columns: 1;
-  grid-template-rows: 2;
-  grid-gap: 350px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 10px;
+  max-width: max-content;
+  overflow: hidden;
+  border: 3px solid white;
+}
+
+.carrousel-tutorial{
+  display: flex;
 }
 
 .slide{
+  background: rgb(101, 15, 15);
+  flex-shrink: 0;
+  width: 100%;
+
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  align-items: stretch;
 }
 
 .slide-img{
@@ -95,15 +96,9 @@ html{
   font-weight: bold;
   font-size: 24px;
   color: #8858CF;
-}
-
-.carrousel-tutorial{
-  display: flex;
-  grid-row: 1;
-  align-items: center;
+  align-self: center;
 }
 
 .carrousel-btn{
-  display: block;
-  grid-row: 2;
+  color: #8858CF;
 }
