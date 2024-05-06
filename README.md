@@ -1,4 +1,4 @@
-# [DubMania](dj4nto.github.io/DubMania/) 🎙️
+# [DubMania](https://dj4nto.github.io/DubMania/) 🎙️
 
 Mini-jeux web sur le thème du doublage pour jouer avec ses amis jusqu'à 4 personnes
 
