@@ -2,7 +2,7 @@
 
 Mini-jeux web sur le thème du doublage pour jouer avec ses amis jusqu'à 4 personnes
 
-**EN DEVELOPPEMENT**
+**! EN DEVELOPPEMENT !**
 
 ## Mini-jeux
 
