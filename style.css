@@ -112,3 +112,16 @@ html{
   90% {transform: translateY(-200%);}
   100% {transform: translateY(0%);}
 }
+
+.links{
+  position: absolute;
+  top: 95%;
+  left: 94%;
+  transform: translate(-50%, -50%);
+}
+
+a{
+  font-family: "AlteHaasGrostekRegular";
+  font-weight: bold;
+  text-decoration: none;
+}
