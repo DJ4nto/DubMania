@@ -7,7 +7,8 @@
 ## Mini-jeux
 
 Liste des **mini-jeux** en cour de développement :
-* Doublage seul ou a plusieur sur une scène où 1, 2, 3 ou 4 personnes parlent (sans écouter le doublage de ses amis)
+
+* Doublage seul ou a plusieurs sur une scène où 1, 2, 3 ou 4 personnes parlent (sans écouter le doublage de ses amis)
 * Doublage a l'aveugle (sans les soustitres)
 * Doublage dans le noir (sans la vidéo)
 * Doublage tour par tour (doubler en écoutant le doublage de ses amis)
