@@ -125,3 +125,15 @@ a{
   font-weight: bold;
   text-decoration: none;
 }
+
+/*Provisoire*/
+.bandeau_dev {
+  position: absolute;
+  top: 95%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  background-color: red;
+  font-weight: bolder;
+  text-align: center;
+}

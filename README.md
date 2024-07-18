@@ -13,6 +13,10 @@ Liste des **mini-jeux** en cour de développement :
 * Doublage dans le noir (sans la vidéo)
 * Doublage tour par tour (doubler en écoutant le doublage de ses amis)
 
+## Crédits
+
+Utilisation d'un vidéo de [*Romandub*](https://www.youtube.com/@RomandubCH) sur Youtube
+
 ## License
 
 MIT License
