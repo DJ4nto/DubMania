@@ -15,7 +15,7 @@ Liste des **mini-jeux** en cour de développement :
 
 ## Crédits
 
-Utilisation d'un vidéo de [*Romandub*](https://www.youtube.com/@RomandubCH) sur Youtube
+Utilisation d'un vidéo de [Romandub](https://romandub.ch/) sur [*Youtube*](https://www.youtube.com/@RomandubCH)
 
 ## License
 
