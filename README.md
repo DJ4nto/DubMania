@@ -19,7 +19,7 @@ Utilisation d'un vidéo de [Romandub](https://romandub.ch/) sur [*Youtube*](http
 
 ## License
 
-MIT License
+[MIT License](https://github.com/DJ4nto/DubMania/blob/main/LICENSE)
 
 Copyright (c) 2024 Antonin LECOCQ
 
