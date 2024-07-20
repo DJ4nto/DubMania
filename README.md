@@ -2,7 +2,7 @@
 
 [***DubMania***](https://dj4nto.github.io/DubMania/) est un jeux web sur le thème du doublage pour jouer avec ses amis jusqu'à 4 personnes
 
-<span style="color: red"> **! EN DEVELOPPEMENT !** </span>
+**! EN DEVELOPPEMENT !** (recherche de l'aide)
 
 ## Mini-jeux
 
