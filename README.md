@@ -6,7 +6,7 @@
 
 ## Mini-jeux
 
-Liste des **mini-jeux** en cour de développement :
+Liste des mini-jeux en cour de développement :
 
 * Doublage seul ou a plusieurs sur une scène où 1, 2, 3 ou 4 personnes parlent (sans écouter le doublage de ses amis)
 * Doublage a l'aveugle (sans les soustitres)
@@ -16,7 +16,7 @@ Liste des **mini-jeux** en cour de développement :
 ## Charte Graphique
 
 <details>
-<summary>La charte graphique de **DubMania** est dispolnible ICI.
+<summary>La charte graphique de DubMania est dispolnible ICI.
 
 </summary>
 
