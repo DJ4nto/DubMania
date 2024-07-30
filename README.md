@@ -1,4 +1,4 @@
-# `<p align="center">`DubMania 🎙️`</p>`
+# <p style="text-align: center;">DubMania 🎙️</p>
 
 [***DubMania***](https://dj4nto.github.io/DubMania/) est un jeux web sur le thème du doublage pour jouer avec ses amis jusqu'à 4 personnes
 
