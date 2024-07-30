@@ -1,4 +1,4 @@
-# <p align="center">DubMania 🎙️</p>
+# `<p align="center">`DubMania 🎙️`</p>`
 
 [***DubMania***](https://dj4nto.github.io/DubMania/) est un jeux web sur le thème du doublage pour jouer avec ses amis jusqu'à 4 personnes
 
@@ -12,6 +12,13 @@ Liste des **mini-jeux** en cour de développement :
 * Doublage a l'aveugle (sans les soustitres)
 * Doublage dans le noir (sans la vidéo)
 * Doublage tour par tour (doubler en écoutant le doublage de ses amis)
+
+## Charte Graphique
+
+La charte graphique de **DubMania** est dispolnible [***ici***](https://github.com/DJ4nto/DubMania/tree/main/Charte%20Graphique%20DubMania).
+
+![1](./Charte%20Graphique%20DubMania/1.png)
+![2](./Charte%20Graphique%20DubMania/2.png)
 
 ## Crédits
 
