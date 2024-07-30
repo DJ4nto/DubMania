@@ -4,7 +4,7 @@
 
 **! EN DEVELOPPEMENT !** (recherche de l'aide / looking for help)
 
-## Mini-jeux
+## 🎲 Mini-jeux 
 
 Liste des mini-jeux en cour de développement :
 
@@ -13,7 +13,7 @@ Liste des mini-jeux en cour de développement :
 * Doublage dans le noir (sans la vidéo)
 * Doublage tour par tour (doubler en écoutant le doublage de ses amis)
 
-## Charte Graphique
+## 🎨 Charte Graphique
 
 <details>
 <summary>La charte graphique de DubMania est dispolnible ICI.
@@ -25,7 +25,7 @@ Liste des mini-jeux en cour de développement :
 
 </details>
 
-## Crédits
+## 🙏 Crédits
 
 Utilisation d'un vidéo de [Romandub](https://romandub.ch/) sur [*Youtube*](https://www.youtube.com/@RomandubCH)
 
