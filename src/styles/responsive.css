@@ -1,0 +1,15 @@
+@media (max-width: 540px) {
+  .centered-page,
+  .home-page {
+    padding: 0.75rem;
+  }
+
+  .hero {
+    padding: 2rem 1rem;
+  }
+
+  .button {
+    min-height: 3.4rem;
+    font-size: 1.05rem;
+  }
+}

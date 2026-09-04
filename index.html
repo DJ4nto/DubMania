@@ -1,47 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <title>DubMania - Jeu gratuit multijoueur de doublage</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="./images/web-logo.png">
-</head>
-<body>
-
-    <main>
-        
-        <img src="./images/logo.png" alt="logo" class="logo">
-
-        <div class="tutorial">
-            <div class="caroussel-tutorial">
-                <div class="slide">
-                    <img class="slide-img" src="./images/mic-logo.png" alt="img">
-                    <p class="slide-txt">Enregistrez-vous sur la vidéo en doublant le texte de votre couleure</p>
-                </div>
-
-                <div class="slide">
-                    <img class="slide-img" src="./images/send-logo.png" alt="img">
-                    <p class="slide-txt">Ecoutez puis Envoyez votre doublage</p>
-                </div>
-
-                <div class="slide">
-                    <img class="slide-img" src="./images/video-logo.png" alt="img">
-                    <p class="slide-txt">Visionnez vos vidéos doublées et Rigolez</p>
-                </div>
-            </div>
-
-            <div class="links">
-                <a href="https://github.com/DJ4nto/DubMania">GitHub</a>
-            </div>
-        </div>
-
-        <div class="div-play-btn" >
-            <a href="game.html">
-                <button class="play-btn">Doubler</button>
-            </a>
-        </div>
-
-    </main>
-
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="DubMania, le mini-jeu multijoueur de doublage vidéo entre amis."
+    />
+    <meta name="theme-color" content="#1F081C" />
+    <title>DubMania</title>
+  </head>
+  <body>
+    <noscript>
+      DubMania nécessite JavaScript pour synchroniser la vidéo et enregistrer
+      votre microphone.
+    </noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

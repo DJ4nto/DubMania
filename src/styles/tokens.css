@@ -1,0 +1,40 @@
+@font-face {
+  font-family: "Stopbuck";
+  src: url("/assets/fonts/Stopbuck.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alte Haas Grotesk";
+  src: url("/assets/fonts/AlteHaasGroteskRegular.woff2")
+    format("woff2");
+  font-display: swap;
+}
+
+:root {
+  --color-primary: #8858cf;
+  --color-secondary: #94b5c2;
+  --color-dark: #1f081c;
+  --color-light: #f2edda;
+  --color-muted: #8d98b4;
+
+  --player-1: #ff3131;
+  --player-2: #00bf63;
+  --player-3: #004aad;
+  --player-4: #ffbd59;
+
+  --color-success: #00bf63;
+  --color-warning: #ffbd59;
+  --color-danger: #ff3131;
+  --color-white: #ffffff;
+
+  --font-display: "Stopbuck", system-ui, sans-serif;
+  --font-body:
+    "Alte Haas Grotesk", Arial, Helvetica, sans-serif;
+
+  --radius-sm: 0.65rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.6rem;
+  --shadow-card: 0 18px 45px rgb(31 8 28 / 18%);
+  --focus-ring: 0 0 0 4px rgb(148 181 194 / 55%);
+}
