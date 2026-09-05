@@ -12,8 +12,10 @@ export class SynchronizationService {
     for (let index = 0; index < samples; index += 1) {
       const sentAt = Date.now();
 
-      const { data, error } =
-        await supabase.rpc('get_server_time');
+      const { data, error } = await supabase.rpc(
+        'get_server_time',
+      );
+
 
       const receivedAt = Date.now();
 

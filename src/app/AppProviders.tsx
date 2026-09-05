@@ -26,17 +26,29 @@ export function AppProviders({
     let active = true;
 
     authService
-      .ensureAnonymousSession()
-      .then(({ user: sessionUser }) => {
-        if (active) setUser(sessionUser);
-      })
-      .catch(() => {
+        .ensureAnonymousSession()
+        .then(({ user: sessionUser }) => {
+            if (active) setUser(sessionUser);
+        })
+        .catch((caughtError: unknown) => {
+        console.error(
+            '[DubMania] Échec de la session Supabase anonyme :',
+            caughtError,
+        );
+
+        const technicalMessage =
+            caughtError instanceof Error
+            ? caughtError.message
+            : 'Erreur Supabase inconnue';
+
         if (active) {
-          setError(
-            'DubMania ne peut pas créer ta session temporaire. Vérifie la configuration Supabase et ta connexion.',
-          );
+            setError(
+            import.meta.env.DEV
+                ? `DubMania ne peut pas créer ta session temporaire. Détail : ${technicalMessage}`
+                : 'DubMania ne peut pas créer ta session temporaire. Vérifie ta connexion puis réessaie.',
+            );
         }
-      });
+        });
 
     return () => {
       active = false;
@@ -48,16 +60,25 @@ export function AppProviders({
     [user],
   );
 
-  if (error) {
+    if (error) {
     return (
-      <main className="centered-page">
-        <section className="panel" role="alert">
-          <h1>Connexion impossible</h1>
-          <p>{error}</p>
+        <main className="centered-page">
+        <section className="panel connection-error" role="alert">
+            <h1>Connexion impossible</h1>
+            <p>{error}</p>
+
+            <button
+            className="button button--primary"
+            type="button"
+            onClick={() => window.location.reload()}
+            >
+            Réessayer
+            </button>
         </section>
-      </main>
+        </main>
     );
-  }
+    }
+
 
   if (!value) {
     return <Loader label="Préparation de DubMania…" />;

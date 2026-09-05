@@ -13,3 +13,177 @@
     font-size: 1.05rem;
   }
 }
+
+@media (max-width: 620px) {
+  .lobby-main {
+    gap: 1.15rem;
+    padding: 1rem;
+  }
+
+  .lobby-code-panel {
+    padding: 1rem;
+  }
+
+  .lobby-code-display {
+    min-height: 5.8rem;
+  }
+
+  .lobby-code-display .lobby-code {
+    font-size: clamp(2.8rem, 17vw, 4.5rem);
+  }
+
+  .lobby-code-panel__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .lobby-code-panel__actions .button {
+    width: 100%;
+  }
+
+  .player-card {
+    grid-template-columns: 0.5rem auto 1fr;
+  }
+
+  .player-card__badges {
+    grid-column: 2 / -1;
+    justify-content: flex-end;
+    border-top: 1px solid rgb(31 8 28 / 16%);
+    padding-top: 0.45rem;
+  }
+
+  .lobby-status-banner {
+    align-items: start;
+  }
+
+  .section-heading h2 {
+    font-size: 1.45rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .player-card__avatar {
+    width: 2.55rem;
+    height: 2.55rem;
+    margin-left: 0.55rem;
+  }
+
+  .player-card__identity {
+    padding-right: 0.55rem;
+  }
+
+  .status-badge {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .app-logo__symbol {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .app-logo__text {
+    font-size: clamp(2.9rem, 16vw, 5rem);
+  }
+
+  .app-logo--compact .app-logo__symbol {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  .app-logo--compact .app-logo__text {
+    font-size: clamp(2rem, 11vw, 3.1rem);
+  }
+}
+
+@media (max-width: 540px) {
+  .home-page__content {
+    gap: 1rem;
+  }
+
+  .home-page__branding {
+    padding-inline: 0.5rem;
+  }
+
+  .hero {
+    padding: 1.75rem 1rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .home-page__content {
+    gap: 0.7rem;
+  }
+
+  .home-page__symbol .app-logo__symbol {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .hero {
+    padding: 1.75rem 1rem;
+  }
+
+  .hero .app-logo__text {
+    font-size: clamp(3rem, 17vw, 4.75rem);
+  }
+}
+
+@media (max-width: 620px) {
+  .manual-video-form__row {
+    grid-template-columns: 1fr;
+  }
+
+  .manual-video-form__row .button {
+    width: 100%;
+  }
+
+  .selected-video-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .selected-video-summary img {
+    aspect-ratio: 16 / 9;
+  }
+
+  .selected-video-summary > div {
+    padding: 0 1rem 1rem;
+  }
+}
+
+@media (max-width: 620px) {
+  .video-catalog__scroll {
+    max-height: min(58dvh, 34rem);
+  }
+
+  .video-catalog__scroll-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .video-catalog__scroll .video-grid {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-height: 700px) {
+  .video-catalog__scroll {
+    max-height: 52dvh;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-catalog__selection {
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+  }
+
+  .video-catalog__selection > div {
+    padding: 0.65rem 0.75rem;
+  }
+
+  .video-catalog__selection strong {
+    font-size: 1.05rem;
+  }
+}

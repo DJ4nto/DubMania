@@ -1,4 +1,8 @@
-import { catalogSchema, type CatalogVideo } from '../types/video';
+import {
+  catalogSchema,
+  type CatalogVideo,
+  type SelectedVideo,
+} from '../types/video';
 import {
   extractYouTubeId,
   youtubeThumbnail,
@@ -23,7 +27,23 @@ export class VideoService {
     return catalogSchema.parse(json);
   }
 
-  fromManualUrl(input: string) {
+  fromCatalog(
+    video: CatalogVideo,
+  ): SelectedVideo {
+    return {
+      source: 'catalog',
+      catalogId: video.id,
+      youtubeId: video.youtubeId,
+      title: video.title,
+      thumbnail: video.thumbnail,
+      description: video.description,
+      requiredPlayers: video.requiredPlayers,
+      category: video.category,
+      duration: video.duration,
+    };
+  }
+
+  fromManualUrl(input: string): SelectedVideo {
     const youtubeId = extractYouTubeId(input);
 
     if (!youtubeId) {
@@ -33,12 +53,12 @@ export class VideoService {
     }
 
     return {
-      source: 'manual' as const,
+      source: 'manual',
       catalogId: null,
       youtubeId,
       title: 'Vidéo YouTube personnalisée',
       thumbnail: youtubeThumbnail(youtubeId),
-      description: '',
+      description: 'Vidéo choisie manuellement par le host.',
       requiredPlayers: null,
       category: null,
       duration: null,

@@ -1,12 +1,12 @@
 @font-face {
   font-family: "Stopbuck";
-  src: url("/assets/fonts/Stopbuck.woff2") format("woff2");
+  src: url("../assets/fonts/Stopbuck.woff2") format("woff2");
   font-display: swap;
 }
 
 @font-face {
   font-family: "Alte Haas Grotesk";
-  src: url("/assets/fonts/AlteHaasGroteskRegular.woff2")
+  src: url("../assets/fonts/AlteHaasGroteskRegular.woff2")
     format("woff2");
   font-display: swap;
 }

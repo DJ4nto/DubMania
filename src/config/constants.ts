@@ -18,3 +18,17 @@ export const PLAYER_COLORS = {
   3: '#004AAD',
   4: '#FFBD59',
 } as const;
+
+/**
+ * Marge ajoutée après la durée déclarée dans videos.json.
+ * Elle laisse le temps à YouTube de terminer après un léger
+ * buffering sans couper la dernière phrase trop tôt.
+ */
+export const RECORDING_DURATION_GRACE_MS = 2_500;
+
+/**
+ * Limite de sécurité pour une vidéo manuelle dont la durée
+ * n'est pas connue dans le catalogue.
+ */
+export const MAX_MANUAL_RECORDING_DURATION_MS =
+  10 * 60 * 1_000;

@@ -12,7 +12,10 @@ export class AuthService {
     } = await supabase.auth.getSession();
 
     if (sessionError) {
-      throw sessionError;
+      throw new Error(
+        `Lecture de la session Supabase impossible : ${sessionError.message}`,
+        { cause: sessionError },
+      );
     }
 
     if (existingSession) {
@@ -26,12 +29,15 @@ export class AuthService {
       await supabase.auth.signInAnonymously();
 
     if (error) {
-      throw error;
+      throw new Error(
+        `Connexion anonyme Supabase refusée : ${error.message}`,
+        { cause: error },
+      );
     }
 
     if (!data.session || !data.user) {
       throw new Error(
-        'Impossible de créer la session temporaire DubMania.',
+        'Supabase a répondu sans fournir de session utilisateur.',
       );
     }
 
