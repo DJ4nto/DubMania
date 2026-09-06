@@ -16,6 +16,7 @@ import { getErrorMessage } from '../../lib/errors/mapError';
 import type { LobbySnapshot } from '../../types/lobby';
 import { useRoundRecording } from '../../hooks/useRoundRecording';
 import { formatDuration } from '../../lib/format';
+import { microphoneSessionService } from '../../services/MicrophoneSessionService';
 
 interface PreparingStageProps {
   snapshot: LobbySnapshot;
@@ -363,13 +364,45 @@ export function PreparingStage({
             preload="metadata"
             />
 
+            <div className="recording-review__actions">
             <button
-            className="button button--success button--full"
-            type="button"
-            onClick={() => void recording.validate()}
+                className="button button--success button--full"
+                type="button"
+                onClick={() => void recording.validate()}
             >
-            Valider mon doublage
+                Valider mon doublage
             </button>
+
+            {recording.attempt === 1 ? (
+                <button
+                className="button button--secondary button--full"
+                type="button"
+                onClick={async () => {
+                try {
+                    await microphoneSessionService.prepare();
+                    await recording.retry();
+                    youtube.prepareReplay();
+
+                    window.setTimeout(() => {
+                    youtube.play();
+                    }, 1_500);
+                } catch (caughtError) {
+                    onError(getErrorMessage(caughtError));
+                }
+                }}
+                >
+                Refaire une fois
+                </button>
+            ) : null}
+            </div>
+
+            {recording.attempt === 2 ? (
+            <p className="recording-review__final-attempt">
+                Deuxième essai : la prochaine validation sera
+                définitive.
+            </p>
+            ) : null}
+
         </section>
         ) : null}
 

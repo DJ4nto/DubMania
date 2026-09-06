@@ -38,6 +38,10 @@ const ERROR_MESSAGES = {
     'Le chemin du fichier audio est invalide.',
   RECORDING_NOT_FOUND:
     'Cet enregistrement est introuvable.',
+  RETRY_ALREADY_USED:
+    'Tu as déjà utilisé ton unique nouvel essai.',
+  FINAL_PLAYBACK_NOT_READY:
+    'Le doublage final n’est pas encore prêt.',
 } as const;
 
 function getErrorSource(

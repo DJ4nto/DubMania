@@ -25,7 +25,10 @@ export type AppErrorCode =
   | 'INVALID_RECORDING'
   | 'INVALID_RECORDING_PATH'
   | 'RECORDING_NOT_FOUND'
-  | 'UPLOAD_FAILED';
+  | 'UPLOAD_FAILED'
+  | 'RETRY_ALREADY_USED'
+  | 'FINAL_PLAYBACK_NOT_READY'
+  | 'AUDIO_DECODE_FAILED';
 
 
 export class AppError extends Error {

@@ -33,7 +33,7 @@ export function HomePage() {
           </div>
 
           <p className="hero__note">
-            1 à 4 joueurs · aucun compte · microphone facultatif
+            1 à 4 joueurs · aucun compte
           </p>
         </section>
       </div>

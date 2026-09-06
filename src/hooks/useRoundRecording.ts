@@ -67,6 +67,7 @@ export function useRoundRecording({
     null,
   );
   const recordingUrlRef = useRef<string | null>(null);
+  const [attempt, setAttempt] = useState<1 | 2>(1);
 
   const round = snapshot.round;
 
@@ -175,7 +176,7 @@ export function useRoundRecording({
             lobbyId: snapshot.lobby.id,
             roundId: round.id,
             playerId: currentPlayer.id,
-            attempt: 1,
+            attempt,
             recording: result,
             startOffsetMs:
               startOffsetRef.current,
@@ -383,8 +384,57 @@ export function useRoundRecording({
     };
   }, [clearTimers]);
 
-  return {
+  const retry = useCallback(async () => {
+    if (
+        !round ||
+        !currentPlayer ||
+        attempt !== 1 ||
+        phase !== 'REVIEW'
+    ) {
+        return;
+    }
+
+    try {
+        setError(null);
+
+        const nextSnapshot =
+        await recordingService.requestRetry(
+            round.id,
+            currentPlayer.id,
+        );
+
+        if (recordingUrlRef.current) {
+        URL.revokeObjectURL(recordingUrlRef.current);
+        recordingUrlRef.current = null;
+        }
+
+        setRecordingUrl(null);
+        setRecordingId(null);
+        setElapsedMs(0);
+        setStopReason(null);
+        setAttempt(2);
+        setPhase('IDLE');
+
+        startedRef.current = false;
+        stoppingRef.current = false;
+
+        onSnapshot(nextSnapshot);
+    } catch (caughtError) {
+        setError(getErrorMessage(caughtError));
+        setPhase('ERROR');
+    }
+    }, [
+    attempt,
+    currentPlayer,
+    onSnapshot,
     phase,
+    round,
+    ]);
+
+
+    return {
+    phase,
+    attempt,
     elapsedMs,
     recordingUrl,
     stopReason,
@@ -392,7 +442,8 @@ export function useRoundRecording({
     startAtYouTubePosition,
     finish: finishFromYouTubeEnd,
     finishManually,
+    retry,
     validate,
     skip,
-  };
+    };
 }

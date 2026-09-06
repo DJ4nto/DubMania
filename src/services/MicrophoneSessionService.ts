@@ -20,6 +20,10 @@ class MicrophoneSessionService {
     return this.stream;
   }
 
+  async prepare(): Promise<void> {
+    await this.acquire();
+  }
+
   get current(): MediaStream | null {
     return this.stream;
   }

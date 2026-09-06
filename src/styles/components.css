@@ -1378,3 +1378,88 @@ height: clamp(8rem, 20vw, 14rem);
   color: #514751;
   text-align: center;
 }
+
+.recording-review__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.recording-review__final-attempt {
+  margin: 0;
+  color: #695e69;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.final-playback-stage {
+  display: grid;
+  gap: 1rem;
+  border-top: 3px solid rgb(31 8 28 / 15%);
+  padding-top: 1.5rem;
+}
+
+.final-volume-list {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.volume-strip {
+  --player-color: var(--color-primary);
+
+  display: grid;
+  grid-template-columns:
+    0.55rem minmax(6rem, 1fr) auto minmax(8rem, 2fr) 3.5rem;
+  align-items: center;
+  gap: 0.7rem;
+  overflow: hidden;
+  border: 2px solid var(--color-dark);
+  border-radius: var(--radius-sm);
+  padding-right: 0.75rem;
+  background: rgb(255 255 255 / 72%);
+}
+
+.volume-strip__color {
+  align-self: stretch;
+  background: var(--player-color);
+}
+
+.volume-strip input[type="range"] {
+  width: 100%;
+  accent-color: var(--player-color);
+  cursor: pointer;
+}
+
+.volume-strip > span:last-child {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-align: right;
+}
+
+.missing-voice {
+  display: grid;
+  grid-template-columns: 0.55rem 1fr auto;
+  align-items: center;
+  gap: 0.7rem;
+  overflow: hidden;
+  border: 2px dashed rgb(31 8 28 / 35%);
+  border-radius: var(--radius-sm);
+  padding-right: 0.75rem;
+  background: rgb(255 255 255 / 45%);
+  opacity: 0.72;
+}
+
+.missing-voice > span {
+  align-self: stretch;
+  min-height: 3rem;
+}
+
+.missing-voice em {
+  font-size: 0.85rem;
+}
+
+.final-playback-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}

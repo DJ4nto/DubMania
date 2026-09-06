@@ -187,3 +187,25 @@
     font-size: 1.05rem;
   }
 }
+
+@media (max-width: 620px) {
+  .recording-review__actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .volume-strip {
+    grid-template-columns:
+      0.45rem minmax(0, 1fr) auto 3.2rem;
+    padding-bottom: 0.65rem;
+  }
+
+  .volume-strip input[type="range"] {
+    grid-column: 2 / -1;
+  }
+
+  .final-playback-actions {
+    grid-template-columns: 1fr;
+  }
+}

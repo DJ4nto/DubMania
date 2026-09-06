@@ -262,6 +262,14 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      advance_round_to_final_if_ready: {
+        Args: { p_round_id: string }
+        Returns: undefined
+      }
+      advance_round_to_review_if_ready: {
+        Args: { p_round_id: string }
+        Returns: undefined
+      }
       build_lobby_snapshot: {
         Args: { target_lobby_id: string; target_user_id: string }
         Returns: Json
@@ -302,6 +310,12 @@ export type Database = {
         }
         Returns: Json
       }
+      request_recording_retry: {
+        Args: { p_player_id: string; p_round_id: string }
+        Returns: Json
+      }
+      return_to_video_selection: { Args: { p_lobby_id: string }; Returns: Json }
+      schedule_final_playback: { Args: { p_lobby_id: string }; Returns: Json }
       schedule_round_start: { Args: { p_lobby_id: string }; Returns: Json }
       select_lobby_video: {
         Args: { p_lobby_id: string; p_video: Json }

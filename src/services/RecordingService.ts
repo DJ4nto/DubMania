@@ -270,6 +270,26 @@ export class RecordingService {
     if (error) throw mapSupabaseError(error);
     return lobbySnapshotSchema.parse(data);
   }
+
+  async requestRetry(
+    roundId: string,
+    playerId: string,
+  ): Promise<LobbySnapshot> {
+    const { data, error } = await supabase.rpc(
+      'request_recording_retry',
+      {
+        p_round_id: roundId,
+        p_player_id: playerId,
+      },
+    );
+
+    if (error) {
+      throw mapSupabaseError(error);
+    }
+
+    return lobbySnapshotSchema.parse(data);
+  }
+
 }
 
 export const recordingService =

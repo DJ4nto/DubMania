@@ -24,6 +24,7 @@ import { VideoCatalog } from '../components/video/VideoCatalog';
 import type { SelectedVideo } from '../types/video';
 import { PreparingStage } from '../components/game/PreparingStage';
 import { gameStateService } from '../services/GameStateService';
+import { FinalPlaybackStage } from '../components/game/FinalPlaybackStage';
 
 function normalizeCode(
   value: string | undefined,
@@ -310,9 +311,16 @@ export function LobbyPage() {
               onSnapshot={setSnapshot}
               onError={setError}
             />
+          ) : snapshot.lobby.state === 'FINAL_READY' ||
+              snapshot.lobby.state === 'FINAL_PLAYBACK' ? (
+            <FinalPlaybackStage
+              snapshot={snapshot}
+              onSnapshot={setSnapshot}
+              onError={setError}
+            />
           ) : (
             <p className="waiting-message">
-              L’étape actuelle sera affichée prochainement.
+              Chargement de l’étape…
             </p>
           )}
 

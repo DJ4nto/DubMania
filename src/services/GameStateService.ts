@@ -48,6 +48,41 @@ export class GameStateService {
     return lobbySnapshotSchema.parse(data);
   }
 
+  async scheduleFinalPlayback(
+    lobbyId: string,
+    ): Promise<LobbySnapshot> {
+    const { data, error } = await supabase.rpc(
+        'schedule_final_playback',
+        {
+        p_lobby_id: lobbyId,
+        },
+    );
+
+    if (error) {
+        throw mapSupabaseError(error);
+    }
+
+    return lobbySnapshotSchema.parse(data);
+    }
+
+    async returnToVideoSelection(
+    lobbyId: string,
+    ): Promise<LobbySnapshot> {
+    const { data, error } = await supabase.rpc(
+        'return_to_video_selection',
+        {
+        p_lobby_id: lobbyId,
+        },
+    );
+
+    if (error) {
+        throw mapSupabaseError(error);
+    }
+
+    return lobbySnapshotSchema.parse(data);
+    }
+
+
   async confirmStarted(
     lobbyId: string,
     roundId: string,

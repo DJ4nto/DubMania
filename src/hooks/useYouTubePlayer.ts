@@ -48,6 +48,19 @@ export function useYouTubePlayer({
   const [error, setError] = useState<string | null>(
     null,
   );
+  const prepareReplay = useCallback(() => {
+    firstPlayingReportedRef.current = false;
+
+    const player = playerRef.current;
+
+    if (!player) return;
+
+    player.pauseVideo();
+    player.seekTo(0, true);
+    player.cueVideoById(youtubeId);
+    setStatus('CUED');
+    }, [youtubeId]);
+
 
   useEffect(() => {
     onPlayingRef.current = onPlaying;
@@ -181,16 +194,17 @@ export function useYouTubePlayer({
     player.cueVideoById(youtubeId);
   }, [youtubeId]);
 
-  return {
+    return {
     containerRef,
     playerRef,
     status,
     error,
     play,
     reset,
+    prepareReplay,
     isReady:
-      status === 'CUED' ||
-      status === 'PAUSED' ||
-      status === 'PLAYING',
-  };
+        status === 'CUED' ||
+        status === 'PAUSED' ||
+        status === 'PLAYING',
+    };
 }
