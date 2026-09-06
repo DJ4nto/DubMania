@@ -6,13 +6,10 @@ $${\color{red}! \space EN \space DEVELOPPEMENT \space !}$$
 
 ## 🎲 Mini-jeux 
 
-Liste des mini-jeux en cour de développement :
+Mini-jeu en cour de développement :
 
-* Doublage seul ou a plusieurs sur une scène où 1, 2, 3 ou 4 personnes parlent (sans écouter le doublage de ses amis)
-* Doublage lire les lèvres (sans les soustitres)
-* Doublage dans le noir (sans la vidéo)
-* ...
+* Doublage seul ou a plusieurs sur une scène où 1, 2, 3 ou 4 personnes parlent (puis écouter le doublage de ses amis)
 
 ## 🙏 Crédits
 
-Utilisation d'un vidéo de [Romandub](https://romandub.ch/) sur [*Youtube*](https://www.youtube.com/@RomandubCH)
+Utilisation des vidéos de [Romandub](https://romandub.ch/) sur [*Youtube*](https://www.youtube.com/@RomandubCH)
