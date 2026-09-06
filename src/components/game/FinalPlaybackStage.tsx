@@ -14,6 +14,12 @@ import { synchronizationService } from '../../services/SynchronizationService';
 import { getErrorMessage } from '../../lib/errors/mapError';
 import { PLAYER_COLORS } from '../../config/constants';
 import type { LobbySnapshot } from '../../types/lobby';
+import {
+  downloadBlob,
+  exportVoiceMixToWav,
+} from '../../lib/audio/exportWav';
+import { Countdown } from './Countdown';
+import { useSynchronizedCountdown } from '../../hooks/useSynchronizedCountdown';
 
 interface FinalPlaybackStageProps {
   snapshot: LobbySnapshot;
@@ -45,14 +51,23 @@ export function FinalPlaybackStage({
     [youtube.playerRef],
   );
 
+  const getYouTubeState = useCallback(
+    () =>
+      youtube.playerRef.current?.getPlayerState() ??
+      null,
+    [youtube.playerRef],
+  );
+
   const finalPlayback = useFinalPlayback({
     snapshot,
     playYouTube: youtube.play,
     resetYouTube: youtube.prepareReplay,
     getYouTubeTime,
+    getYouTubeState,
   });
 
   const scheduleFinalAt = finalPlayback.scheduleAt;
+  const [exporting, setExporting] = useState(false);
 
   useEffect(() => {
     if (
@@ -82,6 +97,12 @@ export function FinalPlaybackStage({
       ),
     [snapshot.recordings],
   );
+
+  const finalCountdown = useSynchronizedCountdown(
+    snapshot.lobby.state === 'FINAL_PLAYBACK'
+        ? round?.finalPlaybackAt ?? null
+        : null,
+    );
 
   async function handlePlay(): Promise<void> {
     if (!currentPlayer?.isHost) return;
@@ -125,6 +146,59 @@ export function FinalPlaybackStage({
     }
   }
 
+  async function handleDownload(): Promise<void> {
+    if (!round || exporting) return;
+
+    setExporting(true);
+
+    try {
+        const fallbackDuration = Math.max(
+        1,
+        ...snapshot.recordings
+            .filter(
+            (recording) =>
+                recording.status === 'VALIDATED',
+            )
+            .map(
+            (recording) =>
+                (recording.startOffsetMs +
+                recording.durationMs) /
+                1_000,
+            ),
+        );
+
+        const durationSeconds =
+        round.video.duration ?? fallbackDuration;
+
+        const blob = await exportVoiceMixToWav({
+        tracks:
+            finalPlayback.loadedTracksRef.current,
+        volumes: finalPlayback.volumes,
+        durationSeconds,
+        });
+
+        const safeTitle = round.video.title
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-zA-Z0-9-_]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+        .toLowerCase();
+
+        downloadBlob(
+        blob,
+        `dubmania-${safeTitle || 'doublage'}-voix.wav`,
+        );
+    } catch (caughtError) {
+        onError(
+        caughtError instanceof Error
+            ? caughtError.message
+            : 'Le mix audio ne peut pas être exporté.',
+        );
+    } finally {
+        setExporting(false);
+    }
+    }
+
   if (!round || !currentPlayer) {
     return (
       <p className="form-message" role="alert">
@@ -135,6 +209,8 @@ export function FinalPlaybackStage({
 
   return (
     <section className="final-playback-stage">
+      <Countdown value={finalCountdown} />
+
       <div className="game-stage-heading">
         <span className="eyebrow">
           Le doublage
@@ -244,15 +320,22 @@ export function FinalPlaybackStage({
         </p>
       )}
 
-      <button
+        <button
         className="button button--ghost button--full"
         type="button"
-        disabled
-        title="L’export WAV sera activé après le test du mix final."
-      >
+        onClick={() => void handleDownload()}
+        disabled={
+            exporting ||
+            !finalPlayback.ready ||
+            finalPlayback.loadedTracksRef.current.length === 0
+        }
+        >
         <Download size={20} aria-hidden="true" />
-        Télécharger le mix des voix
-      </button>
+        {exporting
+            ? 'Création du fichier…'
+            : 'Télécharger le mix des voix'}
+        </button>
+
     </section>
   );
 }

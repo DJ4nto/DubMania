@@ -43,6 +43,7 @@ export interface LobbySnapshot {
   currentPlayerId: string;
   round: GameRound | null;
   recordings: RoundRecording[];
+  playedVideoIds: string[];
   serverTime: string;
 }
 

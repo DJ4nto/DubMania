@@ -16,6 +16,7 @@ import type {
 
 interface VideoCatalogProps {
   selectedVideo: SelectedVideo | null;
+  playedVideoIds: string[];
   onSelect: (video: SelectedVideo) => Promise<void>;
 }
 
@@ -23,6 +24,7 @@ type PlayerFilter = 1 | 2 | 3 | 4 | 'ALL';
 
 export function VideoCatalog({
   selectedVideo,
+  playedVideoIds,
   onSelect,
 }: VideoCatalogProps) {
   const [videos, setVideos] = useState<CatalogVideo[]>([]);
@@ -200,6 +202,7 @@ export function VideoCatalog({
                   selected={
                     selectedVideo?.catalogId === video.id
                   }
+                  played={playedVideoIds.includes(video.id)}
                   onSelect={(selected) => {
                     void handleCatalogSelect(selected);
                   }}

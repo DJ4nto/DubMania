@@ -65,6 +65,29 @@ export class AudioService {
     const playbackTracks: PlaybackVoiceTrack[] = [];
 
     for (const track of tracks) {
+      const trackVideoOffsetSeconds =
+        track.recording.startOffsetMs / 1_000;
+
+      let sourceStartTime = startAtContextTime;
+      let audioOffsetSeconds = 0;
+
+      if (
+        videoPositionSeconds >=
+        trackVideoOffsetSeconds
+      ) {
+        audioOffsetSeconds =
+          videoPositionSeconds -
+          trackVideoOffsetSeconds;
+
+        if (audioOffsetSeconds >= track.buffer.duration) {
+          continue;
+        }
+      } else {
+        sourceStartTime +=
+          trackVideoOffsetSeconds -
+          videoPositionSeconds;
+      }
+
       const source = context.createBufferSource();
       const gain = context.createGain();
 
@@ -75,33 +98,10 @@ export class AudioService {
       source.connect(gain);
       gain.connect(context.destination);
 
-      const trackVideoOffsetSeconds =
-        track.recording.startOffsetMs / 1_000;
-
-      if (
-        videoPositionSeconds >=
-        trackVideoOffsetSeconds
-      ) {
-        const audioOffsetSeconds =
-          videoPositionSeconds -
-          trackVideoOffsetSeconds;
-
-        if (audioOffsetSeconds < track.buffer.duration) {
-          source.start(
-            startAtContextTime,
-            audioOffsetSeconds,
-          );
-        }
-      } else {
-        const delaySeconds =
-          trackVideoOffsetSeconds -
-          videoPositionSeconds;
-
-        source.start(
-          startAtContextTime + delaySeconds,
-          0,
-        );
-      }
+      source.start(
+        sourceStartTime,
+        audioOffsetSeconds,
+      );
 
       playbackTracks.push({
         ...track,

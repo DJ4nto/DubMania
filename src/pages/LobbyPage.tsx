@@ -267,6 +267,7 @@ export function LobbyPage() {
                 <>
                   <VideoCatalog
                     selectedVideo={snapshot.lobby.selectedVideo}
+                    playedVideoIds={snapshot.playedVideoIds}
                     onSelect={handleSelectVideo}
                   />
                   <button

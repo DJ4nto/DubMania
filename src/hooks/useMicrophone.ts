@@ -79,10 +79,28 @@ export function useMicrophone(
     microphoneService.stopStream(streamRef.current);
     streamRef.current = null;
 
-    if (audioContextRef.current) {
-      void audioContextRef.current.close();
-      audioContextRef.current = null;
+    const audioContext = audioContextRef.current;
+    audioContextRef.current = null;
+
+    if (
+    audioContext &&
+    audioContext.state !== 'closed'
+    ) {
+    void audioContext.close().catch(
+        (caughtError: unknown) => {
+        if (
+            !(caughtError instanceof DOMException) ||
+            caughtError.name !== 'InvalidStateError'
+        ) {
+            console.warn(
+            '[DubMania] Fermeture du test micro impossible :',
+            caughtError,
+            );
+        }
+        },
+    );
     }
+
 
     setTesting(false);
     setLevel(0);

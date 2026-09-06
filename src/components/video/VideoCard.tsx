@@ -5,12 +5,14 @@ import type { CatalogVideo } from '../../types/video';
 interface VideoCardProps {
   video: CatalogVideo;
   selected: boolean;
+  played: boolean;
   onSelect: (video: CatalogVideo) => void;
 }
 
 export function VideoCard({
   video,
   selected,
+  played,
   onSelect,
 }: VideoCardProps) {
   return (
@@ -18,10 +20,18 @@ export function VideoCard({
       className={[
         'video-card',
         selected ? 'video-card--selected' : '',
+        played ? 'video-card--played' : '',
       ]
         .filter(Boolean)
         .join(' ')}
     >
+      {played ? (
+        <span className="video-card__played">
+          <Check size={15} aria-hidden="true" />
+          Déjà jouée
+        </span>
+      ) : null}
+
       <img
         className="video-card__thumbnail"
         src={video.thumbnail}

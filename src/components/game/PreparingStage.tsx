@@ -180,10 +180,29 @@ export function PreparingStage({
 
       if (AudioContextConstructor) {
         const audioContext =
-          new AudioContextConstructor();
+        new AudioContextConstructor();
 
-        await audioContext.resume();
-        await audioContext.close();
+        try {
+        if (audioContext.state === 'suspended') {
+            await audioContext.resume();
+        }
+        } finally {
+        if (audioContext.state !== 'closed') {
+            try {
+            await audioContext.close();
+            } catch (caughtError) {
+            if (
+                !(caughtError instanceof DOMException) ||
+                caughtError.name !== 'InvalidStateError'
+            ) {
+                console.warn(
+                '[DubMania] Fermeture du contexte de préparation impossible :',
+                caughtError,
+                );
+            }
+            }
+        }
+        }
       }
 
       const nextSnapshot =

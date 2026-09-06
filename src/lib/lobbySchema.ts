@@ -133,5 +133,6 @@ export const lobbySnapshotSchema = z.object({
   currentPlayerId: z.string().uuid(),
   round: roundSchema.nullable(),
   recordings: z.array(recordingSchema),
+  playedVideoIds: z.array(z.string()),
   serverTime: z.string(),
 });
