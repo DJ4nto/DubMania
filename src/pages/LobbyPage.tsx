@@ -25,6 +25,7 @@ import type { SelectedVideo } from '../types/video';
 import { PreparingStage } from '../components/game/PreparingStage';
 import { gameStateService } from '../services/GameStateService';
 import { FinalPlaybackStage } from '../components/game/FinalPlaybackStage';
+import { AppError } from '../lib/errors/AppError';
 
 function normalizeCode(
   value: string | undefined,
@@ -65,6 +66,17 @@ export function LobbyPage() {
       setSnapshot(nextSnapshot);
       setError(null);
     } catch (caughtError) {
+      if (
+        caughtError instanceof AppError &&
+        (
+          caughtError.code === 'LOBBY_NOT_FOUND' ||
+          caughtError.code === 'NOT_LOBBY_MEMBER' ||
+          caughtError.code === 'SESSION_EXPIRED'
+        )
+      ) {
+        lobbyService.clearSession();
+      }
+
       setError(getErrorMessage(caughtError));
     } finally {
       setLoading(false);

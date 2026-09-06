@@ -1490,3 +1490,59 @@ height: clamp(8rem, 20vw, 14rem);
   text-transform: uppercase;
   box-shadow: 0 0.2rem 0 rgb(31 8 28 / 25%);
 }
+
+.resume-lobby-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  border: 2px solid var(--color-dark);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1rem;
+  background:
+    linear-gradient(
+      115deg,
+      rgb(148 181 194 / 38%),
+      rgb(255 255 255 / 75%)
+    );
+  text-align: left;
+}
+
+.resume-lobby-card strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  text-transform: uppercase;
+}
+
+.resume-lobby-card p {
+  margin: 0.2rem 0 0;
+  color: #5f5360;
+  font-size: 0.9rem;
+}
+
+.resume-lobby-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.connection-banner {
+  position: fixed;
+  z-index: 200;
+  top: 0.75rem;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  border: 2px solid var(--color-dark);
+  border-radius: 999px;
+  padding: 0.65rem 1rem;
+  background: var(--color-warning);
+  color: var(--color-dark);
+  font-weight: 800;
+  box-shadow: var(--shadow-card);
+  transform: translateX(-50%);
+}

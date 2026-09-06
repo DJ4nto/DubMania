@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "lib": [
+      "deno.window",
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ]
+  },
+  "imports": {
+    "@supabase/supabase-js": "npm:@supabase/supabase-js@2.115.0"
+  },
+  "fmt": {
+    "lineWidth": 80,
+    "singleQuote": true,
+    "semiColons": true
+  },
+  "lint": {
+    "rules": {
+      "tags": [
+        "recommended"
+      ]
+    }
+  }
+}

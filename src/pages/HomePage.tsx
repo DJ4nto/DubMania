@@ -1,7 +1,14 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { AppLogo } from '../components/common/AppLogo';
+import { ResumeLobbyCard } from '../components/lobby/ResumeLobbyCard';
+import { lobbyService } from '../services/LobbyService';
 
 export function HomePage() {
+  const [storedSession, setStoredSession] = useState(
+    () => lobbyService.getStoredSession(),
+  );
+
   return (
     <main className="home-page">
       <div className="home-page__content">
@@ -15,6 +22,16 @@ export function HomePage() {
           <p className="hero__tagline">
             Le jeu de doublage entre amis
           </p>
+
+          {storedSession ? (
+            <ResumeLobbyCard
+              session={storedSession}
+              onForget={() => {
+                lobbyService.clearSession();
+                setStoredSession(null);
+              }}
+            />
+          ) : null}
 
           <div className="hero__actions">
             <Link

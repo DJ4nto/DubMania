@@ -14,3 +14,6 @@ supabase/.temp
 
 .vscode/*
 !.vscode/extensions.json
+
+supabase/functions/.env.local
+supabase/functions/.env

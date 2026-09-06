@@ -281,7 +281,15 @@ export type Database = {
         Returns: Json
       }
       create_lobby: { Args: { p_nickname: string }; Returns: Json }
+      delete_cleaned_lobby: { Args: { p_lobby_id: string }; Returns: boolean }
       generate_lobby_code: { Args: never; Returns: string }
+      get_expired_lobbies_for_cleanup: {
+        Args: { p_limit?: number }
+        Returns: {
+          lobby_id: string
+          storage_paths: string[]
+        }[]
+      }
       get_lobby_snapshot: { Args: { p_code: string }; Returns: Json }
       get_server_time: { Args: never; Returns: Json }
       heartbeat_player: { Args: { p_player_id: string }; Returns: Json }
@@ -315,6 +323,7 @@ export type Database = {
         Returns: Json
       }
       return_to_video_selection: { Args: { p_lobby_id: string }; Returns: Json }
+      run_game_maintenance: { Args: never; Returns: Json }
       schedule_final_playback: { Args: { p_lobby_id: string }; Returns: Json }
       schedule_round_start: { Args: { p_lobby_id: string }; Returns: Json }
       select_lobby_video: {

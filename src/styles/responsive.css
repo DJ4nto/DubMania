@@ -209,3 +209,18 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 620px) {
+  .resume-lobby-card {
+    grid-template-columns: 1fr;
+  }
+
+  .resume-lobby-card__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .resume-lobby-card__actions .button {
+    width: 100%;
+  }
+}
